@@ -1,0 +1,11 @@
+
+body, html{
+    width: 100%;
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+    color: #222;
+}
+.navbar-nav .nav-item:hover .nav-link {
+    background-color: darkgrey !important;
+    color: navy !important;
+}
