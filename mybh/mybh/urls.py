@@ -24,7 +24,8 @@ from mainmenu import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^$', views.main_menu),
-    url(r'^login/', views.authorization)
+    url(r'^login/', views.authorization, name="login"),
+    url(r'logout/', views.logoutUser, name="logout")
 ]
 
 """if settings.DEBUG:

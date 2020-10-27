@@ -19,7 +19,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 
 
-<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+<nav class="navbar navbar-expand-md navbar-light m-2" style="background-color: #e3f2fd;">
    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponse">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -38,9 +38,12 @@
         <a class="nav-link rounded" href="#">Пункт меню 4</a>
       </li>
     </ul>
-  </div>
+       </div>
+            <div class="btn-group float-right mt-2" role="group">
+               <span><a class="btn btn-danger btn-block" href ="{% url 'logout' %}" role="button">Выйти</a></span>
+            </div>
 </nav>
-<h1>SUKA, BLYAD!!!!</h1>
+<h1>TEXT!!!!</h1>
 
 </body>
 </html>

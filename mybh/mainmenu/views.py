@@ -2,7 +2,7 @@ from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.template.context_processors import csrf
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 
 
@@ -19,7 +19,7 @@ def authorization(request):
             login(request, user)
             return redirect('/')
         else:
-            messages.error(request, 'Пользователя '+username+' не существует или введен неправильный пароль.')
+            messages.error(request, 'Пользователя ' + username + ' не существует или введен неправильный пароль.')
             return render(request, 'index.html', args)
     else:
         return render(request, 'index.html', args)
@@ -28,3 +28,8 @@ def authorization(request):
 @login_required(login_url='/login/')
 def main_menu(request):
     return render(request, 'base.html')
+
+
+def logoutUser(request):
+    logout(request)
+    return redirect('login')
