@@ -19,13 +19,14 @@ from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf import settings
 from django.conf.urls import url, include
-from mainmenu import views
+from login import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^$', views.main_menu),
-    url(r'^login/', views.authorization, name="login"),
-    url(r'logout/', views.logoutUser, name="logout")
+    url(r'^login/$', views.authorization, name="login"),
+    url(r'logout/$', views.logoutUser, name="logout"),
+    url(r'organization/', include('organization.urls'))
 ]
 
 """if settings.DEBUG:

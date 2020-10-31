@@ -15,14 +15,13 @@ import os
 import environ
 
 env = environ.Env(
-            # set casting, default value
-                DEBUG=(bool, False)
-                )
+    # set casting, default value
+    DEBUG=(bool, False)
+)
 # reading .env file
 environ.Env.read_env()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -31,10 +30,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = env('SECKRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG =env('DEBUG')
+DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = ['127.0.0.1','109.68.215.251','368837-cd94779.tmweb.ru']
-
+ALLOWED_HOSTS = ['127.0.0.1', '109.68.215.251', '368837-cd94779.tmweb.ru']
 
 # Application definition
 
@@ -45,7 +43,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'mainmenu.apps.MainmenuConfig',
+    'login.apps.LoginConfig',
+    'organization.apps.OrganizationConfig',
 ]
 
 MIDDLEWARE = [
@@ -59,11 +60,11 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'mybh.urls'
-
+TEMPLATE_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "templates")
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [TEMPLATE_DIR],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -78,21 +79,19 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'mybh.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': env('DB_NAME'),
-            'USER': env('DB_USER'),
-            'PASSWORD': env('DB_PASSWORD'),
-            'HOST': 'localhost',
-            'PORT': '',
-            }
-        }
-
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': env('DB_NAME'),
+        'USER': env('DB_USER'),
+        'PASSWORD': env('DB_PASSWORD'),
+        'HOST': 'localhost',
+        'PORT': '',
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -112,7 +111,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
@@ -126,8 +124,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-
-
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
@@ -135,20 +131,17 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
 
-MEDIA_URL = '/media/' # URL для медии в шаблонах
+MEDIA_URL = '/media/'  # URL для медии в шаблонах
 
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')  # пустая папка, сюда будет собирать статику collectstatic
 
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static') # пустая папка, сюда будет собирать статику collectstatic
-
-STATIC_URL = '/static/' # URL для шаблонов
-
+STATIC_URL = '/static/'  # URL для шаблонов
 
 STATICFILES_DIRS = (
 
-        os.path.join(PROJECT_ROOT, 'assets'),
+    os.path.join(PROJECT_ROOT, 'assets'),
 
-        )
-
+)
 
 # "Поисковики" статики. Первый ищет статику в STATICFILES_DIRS,
 
@@ -156,9 +149,8 @@ STATICFILES_DIRS = (
 
 STATICFILES_FINDERS = (
 
-        'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.FileSystemFinder',
 
-        'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 
-        )
-
+)

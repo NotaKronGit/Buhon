@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block menu %}
+            {% for key, value in items.items %}
+            <li class="nav-item">
+                <a class="nav-link rounded border shadow-lg p-2" href="{{ value }}">{{ key }} </a>
+            </li>
+        {% endfor %}
+{% endblock %}
+
+{% block content %}
+    {% for el in body_content %}
+        <div class="container-fluid mt-4">
+            <div class="row">
+                <div class="col-1"></div>
+                <div class="col-10 justify-content-start bg-info shadow-lg p-3 rounded border-top border-right border-left">
+                    <h2>{{ el.name }}</h2>
+                </div>
+            <div class="col-1"></div>
+            </div>
+            <div class="row">
+               <div class="col-1"></div>
+               <div class="col-6 col-md-8 justify-content-start bg-light shadow-lg p-3 rounded border-bottom border-left">
+                    <p> КПП: {{ el.kpp }}</p>
+                    <p> ИНН: {{ el.inn }}</p>
+               </div>
+               <div class="col-4 col-md-2 justify-content-center bg-light shadow-lg p-2 rounded border-bottom border-right ">
+                   <a class="btn btn-info btn-block p-1 pb-3 pt-3 mt-3" href ="#" role="button">Подробнее</a>
+               </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

@@ -25,25 +25,15 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarResponse">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item">
-        <a class="nav-link rounded" href="#">Пункт меню 1 </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link rounded" href="#">Пункт меню 2</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link rounded" href="#">Пункт меню 3</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link rounded" href="#">Пункт меню 4</a>
-      </li>
+        {% block menu %}{% endblock %}
     </ul>
        </div>
-            <div class="btn-group float-right mt-2" role="group">
+            <div class="btn-group float-right mt-2 align-items--bottom" role="group">
+               <span class="text-danger mt-3 mr-3">{{request.user}}</span>
                <span><a class="btn btn-danger btn-block" href ="{% url 'logout' %}" role="button">Выйти</a></span>
             </div>
 </nav>
-<h1>TEXT!!!!</h1>
+{% block content %}{% endblock %}
 
 </body>
 </html>

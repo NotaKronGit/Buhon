@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block menu %}
+            {% for key, value in items.items %}
+            <li class="nav-item">
+                <a class="nav-link rounded border shadow-lg p-2" href="{{ value }}">{{ key }} </a>
+            </li>
+        {% endfor %}
+{% endblock %}
+
+{% block content %}
+   
+{% endblock %}
